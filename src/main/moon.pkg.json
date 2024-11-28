@@ -15,7 +15,10 @@
         "span",
         "respo_attrs",
         "respo_style",
-        "declare_static_style"
+        "str_spaced",
+        "pre",
+        "declare_static_style",
+        "text_node"
       ]
     },
     { "path": "tiye/dom-ffi/lib", "alias": "dom_ffi" }

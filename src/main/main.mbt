@@ -1,18 +1,14 @@
 let app_store_key : String = "mbt-workflow"
 
 fn view(
-  store : Store
+  _store : Store
 ) -> @respo_node.RespoNode[ActionOp]!@respo_node.RespoCommonError {
   if false {
     raise @respo_node.RespoCommonError("TODO")
   }
   // @dom_ffi.log("Store to render: " + store.to_json().stringify(indent=2))
-  let states = store.get_states()
-  div(
-    class_name=@respo.ui_global,
-    style=respo_style(padding=Px(12)),
-    [comp_counter(states.pick("counter"), store.counted)],
-  )
+  // let states = store.get_states()
+  comp_container()
 }
 
 fn main {
