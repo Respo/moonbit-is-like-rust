@@ -1,3 +1,4 @@
+///|
 fn comp_container() -> @respo_node.RespoNode[ActionOp] {
   div(
     class_name=str_spaced(
@@ -58,7 +59,8 @@ fn comp_container() -> @respo_node.RespoNode[ActionOp] {
               comp_topic("Named Arguments"),
               comp_compare(mbt_named_arguments, rs_named_arguments),
               comp_section("TRAITS"),
-              comp_topic("Declaration"),
+              comp_topic("Methods"),
+              comp_compare(mbt_struct_methods, rs_struct_methods),
               comp_topic("Usage"),
               comp_topic("Default Implementation"),
               comp_topic("Downcasting"),
@@ -73,6 +75,7 @@ fn comp_container() -> @respo_node.RespoNode[ActionOp] {
   )
 }
 
+///|
 fn comp_section(title : String) -> @respo_node.RespoNode[ActionOp] {
   div(
     class_name=str_spaced([]),
@@ -88,6 +91,7 @@ fn comp_section(title : String) -> @respo_node.RespoNode[ActionOp] {
   )
 }
 
+///|
 fn comp_topic(title : String) -> @respo_node.RespoNode[ActionOp] {
   div(
     class_name=str_spaced([@respo.ui_center]),
@@ -102,6 +106,7 @@ fn comp_topic(title : String) -> @respo_node.RespoNode[ActionOp] {
   )
 }
 
+///|
 fn comp_compare(
   mbt_code : String,
   rs_code : String
@@ -129,7 +134,7 @@ fn comp_compare(
   )
 }
 
-/// a custom style for code block
+///| a custom style for code block
 fn code_block[T](
   class_name? : String,
   style? : @respo_node.RespoStyle,
@@ -149,11 +154,13 @@ fn code_block[T](
   )
 }
 
+///|
 fn str_some_spaced(arr : Array[String?]) -> String {
   arr.filter(fn(x) { not(x.is_empty()) }).map(fn(x) { x.unwrap() })
   |> String::concat(separator=" ")
 }
 
+///|
 let style_code_block : String = declare_static_style(
   [
     (
@@ -171,6 +178,7 @@ let style_code_block : String = declare_static_style(
   ],
 )
 
+///|
 let style_lang_name : String = declare_static_style(
   [
     (
