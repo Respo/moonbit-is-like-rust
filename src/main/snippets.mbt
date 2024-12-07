@@ -67,17 +67,11 @@ let rs_arrays : String =
   #| let mut shopping_list = vec!["catfish", "water", "tulips", "blue paint"];
   #| shopping_list[1] = "bottle of water";
 
-// var occupations = [
-//     "Malcolm": "Captain",
-//     "Kaylee": "Mechanic",
-// ]
-// occupations["Jayne"] = "Public Relations"
-
 ///|
 let mbt_maps : String =
   #| let occupations = {
-  #| "Malcolm": "Captain",
-  #| "Kaylee": "Mechanic",
+  #|   "Malcolm": "Captain",
+  #|   "Kaylee": "Mechanic",
   #| }
   #| occupations["Jayne"] = "Public Relations"
 
@@ -199,6 +193,116 @@ let rs_struct_methods =
   #|         format!("A shape with {} sides.", self.number_of_sides)
   #|     }
   #| }
+
+///|
+let mbt_trait_objects =
+  #| trait Animal {
+  #|   speak(Self) -> Unit
+  #| }
+  #|
+  #| type Duck String
+  #| fn Duck::make(name: String) -> Duck { Duck(name) }
+  #| fn speak(self: Duck) -> Unit {
+  #|   println(self._ + ": quack!")
+  #| }
+  #|
+  #| type Fox String
+  #| fn Fox::make(name: String) -> Fox { Fox(name) }
+  #| fn Fox::speak(_self: Fox) -> Unit {
+  #|   println("What does the fox say?")
+  #| }
+  #|
+  #| fn main {
+  #|   let duck1 = Duck::make("duck1")
+  #|   let duck2 = Duck::make("duck2")
+  #|   let fox1 = Fox::make("fox1")
+  #|   let animals = [ duck1 as Animal, duck2 as Animal, fox1 as Animal ]
+  #|   let mut i = 0
+  #|   while i < animals.length() {
+  #|     animals[i].speak()
+  #|     i = i + 1
+  #|   }
+  #| }
+
+///|
+let rs_trait_objects =
+  #| trait Animal {
+  #|     fn speak(&self);
+  #| }
+  #|
+  #| struct Duck {
+  #|     name: String,
+  #| }
+  #| impl Duck {
+  #|   fn new(name: String) -> Duck {
+  #|     Duck { name }
+  #|   }
+  #| }
+  #| impl Animal for Duck {
+  #|     fn speak(&self) {
+  #|         println!("{}: quack!", self.name);
+  #|     }
+  #| }
+  #|
+  #| struct Fox {
+  #|     name: String,
+  #| }
+  #| impl Fox {
+  #|     fn new(name: String) -> Fox {
+  #|         Fox { name }
+  #|     }
+  #| }
+  #| impl Animal for Fox {
+  #|     fn speak(&self) {
+  #|         println!("What does the fox say?");
+  #|     }
+  #| }
+  #|
+  #| fn main() {
+  #|     let duck1 = Duck::new("duck1");
+  #|     let duck2 = Duck::new("duck2");
+  #|     let fox1 = Fox::new("fox1");
+  #|     let animals: Vec<Box<dyn Animal>> = vec![
+  #|         Box::new(duck1),
+  #|         Box::new(duck2),
+  #|         Box::new(fox1),
+  #|     ];
+  #|     for animal in animals {
+  #|         animal.speak();
+  #|     }
+  #| }
+
+///|
+let mbt_default_trait_impl =
+  #| trait I {
+  #|   f(Self) -> Unit
+  #|   f_twice(Self) -> Unit
+  #| }
+  #|
+  #| impl I with f_twice(self) {
+  #|   self.f()
+  #|   self.f()
+  #| }
+
+///|
+let rs_default_trait_impl =
+  #| trait I {
+  #|     fn f(&self);
+  #|     fn f_twice(&self) {
+  #|         self.f();
+  #|         self.f();
+  #|     }
+  #| }
+
+///|
+let mbt_hashmap =
+  #| let map : Map[String, Int] = { "x": 1, "y": 2, "z": 3 }
+
+///|
+let rs_hashmap =
+  #| let mut map = HashMap::new();
+  #| map.insert("x", 1);
+  #| map.insert("y", 2);
 
 // fn demo() {
 // }
