@@ -7,10 +7,10 @@ let mbt_variable : String =
 
 ///|
 let rs_variable : String =
-  #| let mut my_variable: usize = 42;
+  #| let mut my_variable: i32 = 42;
   #| my_variable = 50;
   #|
-  #| let my_constant: usize = 42:
+  #| let my_constant: i32 = 42;
 
 ///|
 let mbt_explict_type : String =
